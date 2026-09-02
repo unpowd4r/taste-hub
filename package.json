@@ -1,0 +1,21 @@
+{
+  "name": "taste-hub",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mobile": "pnpm --filter mobile",
+    "web": "pnpm --filter web",
+    "ext": "pnpm --filter ext",
+    "ts-check": "pnpm -r exec tsc --noEmit",
+    "dev": "pnpm -r --parallel dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.26.1",
+  "devDependencies": {
+    "prettier": "^3.9.6"
+  }
+}
