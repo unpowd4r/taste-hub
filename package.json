@@ -14,8 +14,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.26.1",
+  "packageManager": "pnpm@11.25.0",
   "devDependencies": {
-    "prettier": "^3.9.6"
+    "prettier": "^3.9.6",
+    "typescript": "~6.0.3"
   }
 }
