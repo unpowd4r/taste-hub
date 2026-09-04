@@ -1,13 +1,18 @@
-import { TYPE_LABELS } from '@app/constants';
-import { MEDIA_TYPES } from '@app/types';
 import { StyleSheet, Text, View } from 'react-native';
+
+import { TYPE_LABELS } from '@app/constants';
+
+import { MEDIA_TYPES } from '@app/types';
 
 export default function Index() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Taste Hub</Text>
-      {MEDIA_TYPES.map((type) => (
-        <Text key={type} style={styles.item}>
+      {MEDIA_TYPES.map(type => (
+        <Text
+          key={type}
+          style={styles.item}
+        >
           {TYPE_LABELS[type]}
         </Text>
       ))}
@@ -19,7 +24,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#0b0b0F',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     paddingHorizontal: 24,
     paddingTop: 20,
   },
