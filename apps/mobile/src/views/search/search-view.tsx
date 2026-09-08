@@ -1,20 +1,18 @@
-import { StyleSheet, Text } from 'react-native';
-
-import ScreenLayout from '../../app/screen-layout';
+import { Stack } from 'expo-router';
+import { ScrollView, Text } from 'react-native';
 
 export function SearchView() {
   return (
-    <ScreenLayout>
-      <Text style={styles.title}>Search Page</Text>
-    </ScreenLayout>
+    <>
+      <Stack.Title>Search</Stack.Title>
+      <Stack.SearchBar
+        placement='automatic'
+        placeholder='Search'
+        onChangeText={text => console.log(text)}
+      />
+      <ScrollView>
+        <Text>Items</Text>
+      </ScrollView>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  title: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: '600',
-    marginBottom: 10,
-  },
-});

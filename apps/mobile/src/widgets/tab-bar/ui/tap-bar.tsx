@@ -36,6 +36,11 @@ export function TabBar() {
         />
         <NativeTabs.Trigger.Label>Account</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger
+        name='search'
+        role='search'
+      ></NativeTabs.Trigger>
     </NativeTabs>
   );
 }

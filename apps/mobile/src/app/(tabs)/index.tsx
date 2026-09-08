@@ -1,13 +1,37 @@
+import { Download, Play, Plus } from 'lucide-react-native';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { TYPE_LABELS } from '@app/constants';
 
 import { MEDIA_TYPES } from '@app/types';
 
+import { Button } from '../../shared/ui';
+
 export default function Index() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Taste Hub</Text>
+      <Button
+        icon={Play}
+        onPress={() => {}}
+      >
+        Watch Movie
+      </Button>
+
+      <Button
+        variant='secondary'
+        icon={Download}
+        onPress={() => {}}
+      >
+        Download
+      </Button>
+
+      <Button
+        variant='secondary'
+        icon={Plus}
+        onPress={() => {}}
+      />
+
       {MEDIA_TYPES.map(type => (
         <Text
           key={type}
