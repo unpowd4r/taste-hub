@@ -1,5 +1,5 @@
 import { Link } from 'expo-router';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { TYPE_LABELS } from '@app/constants';
 
@@ -8,11 +8,13 @@ import { COLORS } from '@app/tokens';
 import { MEDIA_TYPES } from '@app/types';
 
 import ScreenLayout from '../../app/screen-layout';
+import { ScreenTitle } from '../../shared/ui';
 
 export function LibraryView() {
   return (
     <ScreenLayout>
-      <Text style={styles.title}>Library</Text>
+      <ScreenTitle>Library</ScreenTitle>
+
       {MEDIA_TYPES.map(type => (
         <Link
           style={styles.navItem}

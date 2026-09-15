@@ -1,66 +1,37 @@
-import { Download, Play, Plus } from 'lucide-react-native';
-import { StyleSheet, Text, View } from 'react-native';
-
-import { TYPE_LABELS } from '@app/constants';
-
-import { MEDIA_TYPES } from '@app/types';
+import { Play, Plus } from 'lucide-react-native';
+import { View } from 'react-native';
 
 import { Button } from '../../shared/ui';
+import { Header } from '../../widgets/header';
+import ScreenLayout from '../screen-layout';
 
 export default function Index() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Taste Hub</Text>
-      <Button
-        icon={Play}
-        onPress={() => {}}
-      >
-        Watch Movie
-      </Button>
+    <ScreenLayout>
+      <Header />
 
-      <Button
-        variant='secondary'
-        icon={Download}
-        onPress={() => {}}
-      >
-        Download
-      </Button>
-
-      <Button
-        variant='secondary'
-        icon={Plus}
-        onPress={() => {}}
-      />
-
-      {MEDIA_TYPES.map(type => (
-        <Text
-          key={type}
-          style={styles.item}
+      <View style={{ marginTop: 60 }}>
+        <Button
+          icon={Play}
+          onPress={() => {}}
         >
-          {TYPE_LABELS[type]}
-        </Text>
-      ))}
-    </View>
+          Watch Movie
+        </Button>
+
+        <Button
+          variant='secondary'
+          icon={Plus}
+          onPress={() => {}}
+        />
+      </View>
+    </ScreenLayout>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0b0b0F',
-    justifyContent: 'center',
-    paddingHorizontal: 24,
-    paddingTop: 20,
-  },
-  title: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: '600',
-    marginBottom: 10,
-  },
-  item: {
-    color: '#a1a1aa',
-    fontSize: 16,
-    paddingVertical: 4,
-  },
-});
+// const styles = StyleSheet.create({
+//   item: {
+//     color: '#a1a1aa',
+//     fontSize: 16,
+//     paddingVertical: 4,
+//   },
+// });
