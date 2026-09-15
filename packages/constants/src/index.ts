@@ -4,6 +4,7 @@ export const STATUS_LABELS: Record<TStatus, string> = {
   want: 'Want',
   progress: 'In progress',
   done: 'Done',
+  dropped: 'Dropped',
 };
 
 export const TYPE_LABELS: Record<TMediaType, string> = {

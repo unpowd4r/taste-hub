@@ -20,6 +20,7 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "../../packages/*/src/**/*.ts",
-    "../../packages/*/src/**/*.tsx"
+    "../../packages/*/src/**/*.tsx",
+    "../../packages/api/orval.config.ts"
   ]
 }
