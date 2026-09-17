@@ -18,7 +18,7 @@ export function FloatingButton({ icon: Icon, onPress, side, iconOffset }: Props)
   const position = [
     styles.root,
     { top: insets.top + SPACE[2] },
-    side === 'left' ? { left: SPACE[4] } : { right: SPACE[4] },
+    side === 'left' ? { left: SPACE['layout-horizontal'] } : { right: SPACE['layout-horizontal'] },
   ];
 
   const content = (

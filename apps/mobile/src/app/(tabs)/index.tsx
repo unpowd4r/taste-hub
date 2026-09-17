@@ -1,13 +1,7 @@
-import { Play, Plus } from 'lucide-react-native';
-import { ScrollView, View } from 'react-native';
-
 import type { TitleListItemResponse } from '@app/api';
 
-import { SPACE } from '@app/tokens';
-
 import { TitleCard } from '../../entities/title-card';
-import { Button } from '../../shared/ui';
-import { Header } from '../../widgets/header';
+import { CarouselSection, Header, HeroSlider } from '../../widgets';
 import ScreenLayout from '../screen-layout';
 
 export const SAMPLE_TITLES: TitleListItemResponse[] = [
@@ -68,29 +62,9 @@ export default function Index() {
     <ScreenLayout>
       <Header />
 
-      <View style={{ marginTop: 60 }}>
-        <Button
-          icon={Play}
-          onPress={() => {}}
-        >
-          Watch Movie
-        </Button>
+      <HeroSlider items={SAMPLE_TITLES} />
 
-        <Button
-          variant='secondary'
-          icon={Plus}
-          onPress={() => {}}
-        />
-      </View>
-
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{
-          marginTop: 15,
-        }}
-        contentContainerStyle={{ gap: SPACE[3] }}
-      >
+      <CarouselSection title='Top picks for you'>
         {SAMPLE_TITLES.map(title => (
           <TitleCard
             key={title.id}
@@ -98,15 +72,17 @@ export default function Index() {
             title={title}
           />
         ))}
-      </ScrollView>
+      </CarouselSection>
+
+      <CarouselSection title='Popular now'>
+        {SAMPLE_TITLES.map(title => (
+          <TitleCard
+            key={title.id}
+            onPress={() => {}}
+            title={title}
+          />
+        ))}
+      </CarouselSection>
     </ScreenLayout>
   );
 }
-
-// const styles = StyleSheet.create({
-//   item: {
-//     color: '#a1a1aa',
-//     fontSize: 16,
-//     paddingVertical: 4,
-//   },
-// });
