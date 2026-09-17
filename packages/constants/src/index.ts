@@ -1,16 +1,20 @@
-import type { TMediaType, TStatus } from '@app/types';
+import type {
+  LibraryEntryResponseStatus,
+  TitleListItemResponseType,
+} from '../../api/src/generated/schemas/models';
 
-export const STATUS_LABELS: Record<TStatus, string> = {
-  want: 'Want',
-  progress: 'In progress',
-  done: 'Done',
-  dropped: 'Dropped',
+export const STATUS_LABELS: Record<LibraryEntryResponseStatus, string> = {
+  PLANNED: 'Planned',
+  IN_PROGRESS: 'In Progress',
+  COMPLETED: 'Completed',
+  ON_HOLD: 'On Hold',
+  DROPPED: 'Dropped',
 };
 
-export const TYPE_LABELS: Record<TMediaType, string> = {
-  anime: 'Anime',
-  book: 'Book',
-  game: 'Game',
-  movie: 'Movie',
-  series: 'Series',
+export const TYPE_LABELS: Record<TitleListItemResponseType, string> = {
+  ANIME: 'Anime',
+  BOOK: 'Book',
+  GAME: 'Game',
+  MOVIE: 'Movie',
+  TV_SHOW: 'Series',
 };
