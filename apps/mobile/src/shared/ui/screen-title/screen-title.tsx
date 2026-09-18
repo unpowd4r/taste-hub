@@ -10,7 +10,7 @@ type Props = {
 export function ScreenTitle({ children, action }: Props) {
   return (
     <View style={styles.root}>
-      <Text style={styles.title}> {children}</Text>
+      <Text style={styles.title}>{children}</Text>
       {action}
     </View>
   );
