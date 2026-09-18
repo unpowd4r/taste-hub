@@ -1,5 +1,6 @@
-//@ts-nocheck
+// @ts-nocheck
 import expoConfig from 'eslint-config-expo/flat.js';
+import importPlugin from 'eslint-plugin-import';
 import reactHooks from 'eslint-plugin-react-hooks';
 import { defineConfig } from 'eslint/config';
 import ts from 'typescript-eslint';
@@ -24,16 +25,38 @@ export default defineConfig([
 
   {
     files: ['**/*.{ts,tsx}'],
+
+    plugins: {
+      import: importPlugin,
+    },
+
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './apps/mobile/tsconfig.json',
+        },
+      },
+    },
+
     rules: {
       '@typescript-eslint/consistent-type-imports': [
         'error',
-        { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
+        {
+          prefer: 'type-imports',
+          fixStyle: 'inline-type-imports',
+        },
       ],
+
       '@typescript-eslint/no-unused-vars': [
         'error',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
       ],
+
       '@typescript-eslint/no-explicit-any': 'error',
+
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },

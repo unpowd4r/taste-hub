@@ -1,10 +1,24 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { COLORS } from '@app/tokens';
 
-export default function ScreenLayout({ children }: { children: React.ReactNode }) {
-  return <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
+type Props = {
+  children: React.ReactNode;
+  edges?: ('top' | 'bottom')[];
+};
+
+export default function ScreenLayout({ children, edges = ['top'] }: Props) {
+  if (edges.length === 0) {
+    return <View style={styles.container}>{children}</View>;
+  }
+
+  return (
+    <SafeAreaView
+      style={styles.container}
+      edges={edges}
+    ></SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({

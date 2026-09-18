@@ -1,4 +1,4 @@
-import { TabBar } from '../../widgets';
+import { TabBar } from '@/widgets';
 
 export default function TabsLayout() {
   return <TabBar />;

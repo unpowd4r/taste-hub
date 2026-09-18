@@ -1,4 +1,4 @@
-import { TitleDetailView } from '../../../views';
+import { TitleDetailView } from '@/views';
 
 export default function TitleDetail() {
   return <TitleDetailView />;

@@ -1,93 +1,117 @@
-import { Image } from 'expo-image';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Play, Plus } from 'lucide-react-native';
-import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import type { TitleListItemResponse } from '@app/api';
 
-import { COLORS, FONT_SIZE, FONT_WEIGHT, SPACE } from '@app/tokens';
+import { SPACE } from '@app/tokens';
 
-import { Button } from '../../../shared/ui';
+import { useHeroScroll } from '../model';
 
-const { width } = Dimensions.get('window');
-const HEIGHT = width * 1.25;
+import { HeroPagination } from './hero-pagination';
+import { HeroSlide } from './hero-slide';
+import { TitleInfo } from '@/entities/title-info';
+import { Button } from '@/shared/ui';
+
+const MOCK_GENRES = ['Thrillers', 'Dramas', 'Action', 'Chime'];
+const MOCK_DESCRIPTION =
+  'When an overachieving college senior makes a wrong turn, her road trip becomes a life-changing fight for...';
 
 type Props = {
   items: TitleListItemResponse[];
 };
 
 export function HeroSlider({ items }: Props) {
+  const { width } = Dimensions.get('window');
+  const height = width * 1.35;
+
+  const { scrollX, textProgress, index, scrollHandler } = useHeroScroll({ width });
+  const current = items[index];
+
+  const textBlockStyle = useAnimatedStyle(() => ({
+    opacity: textProgress.value,
+    transform: [{ translateY: (1 - textProgress.value) * 24 }],
+  }));
+
   return (
-    <ScrollView
-      horizontal
-      pagingEnabled
-      showsHorizontalScrollIndicator={false}
-      style={styles.root}
-    >
-      {items.map(item => (
+    <View style={{ height }}>
+      <Animated.ScrollView
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        onScroll={scrollHandler}
+      >
+        {items.map(item => (
+          <HeroSlide
+            key={item.id}
+            item={item}
+            width={width}
+            height={height}
+          />
+        ))}
+      </Animated.ScrollView>
+
+      {current && (
         <View
-          key={item.id}
-          style={styles.slide}
+          style={styles.content}
+          pointerEvents='box-none'
         >
-          <Image
-            source={item.coverUrl}
-            style={StyleSheet.absoluteFill}
-            contentFit='cover'
-            transition={300}
-          />
+          <Animated.View style={textBlockStyle}>
+            <TitleInfo
+              name={current.name}
+              genres={MOCK_GENRES}
+              description={MOCK_DESCRIPTION}
+            />
+          </Animated.View>
 
-          <LinearGradient
-            colors={['transparent', 'rgba(2,0,3,0.8)', COLORS.bg.base]}
-            locations={[0.35, 0.75, 1]}
-            style={StyleSheet.absoluteFill}
-          />
+          <View style={styles.bottom}>
+            <View style={styles.actions}>
+              <Button
+                icon={Play}
+                onPress={() => {}}
+              >
+                Watch Movie
+              </Button>
 
-          <View>
-            <Text
-              style={styles.name}
-              numberOfLines={2}
-            >
-              {item.name}
-            </Text>
-          </View>
+              <Button
+                variant='secondary'
+                icon={Plus}
+                onPress={() => {}}
+              />
+            </View>
 
-          <View style={styles.actions}>
-            <Button
-              icon={Play}
-              onPress={() => {}}
-            >
-              Watch Movie
-            </Button>
-
-            <Button
-              variant='secondary'
-              icon={Plus}
-              onPress={() => {}}
+            <HeroPagination
+              count={items.length}
+              width={width}
+              scrollX={scrollX}
             />
           </View>
         </View>
-      ))}
-    </ScrollView>
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  root: {
-    height: HEIGHT,
-  },
-  slide: {
-    width,
-    height: HEIGHT,
+  content: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    paddingHorizontal: SPACE['layout-horizontal'],
+    paddingBottom: SPACE[4],
+    gap: SPACE[2],
     justifyContent: 'flex-end',
   },
-  content: { padding: SPACE['layout-horizontal'], gap: SPACE[4] },
-  name: {
-    color: COLORS.text.primary,
-    fontSize: FONT_SIZE['3xl'],
-    fontWeight: FONT_WEIGHT.bold,
+  bottom: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    marginTop: SPACE[3],
   },
   actions: {
     flexDirection: 'row',
+    alignItems: 'center',
     gap: SPACE[3],
   },
 });

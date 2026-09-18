@@ -1,6 +1,6 @@
 import { StyleSheet, Text } from 'react-native';
 
-import ScreenLayout from '../../app/screen-layout';
+import ScreenLayout from '@/app/screen-layout';
 
 export function ProfileView() {
   return (

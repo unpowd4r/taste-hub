@@ -23,7 +23,7 @@ export function CarouselSection({ children, title, onPress }: Props) {
 
         {hasOnPress && (
           <ChevronRight
-            size={22}
+            size={24}
             color={COLORS.text.primary}
           />
         )}
@@ -41,17 +41,18 @@ export function CarouselSection({ children, title, onPress }: Props) {
 }
 
 const styles = StyleSheet.create({
-  root: { gap: SPACE[3], marginTop: SPACE[5] },
+  root: { gap: SPACE[3], marginTop: SPACE[6] },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: SPACE['layout-horizontal'],
+    marginHorizontal: SPACE['layout-horizontal'],
+    marginBottom: SPACE[2],
   },
   title: {
     color: COLORS.text.primary,
     fontSize: FONT_SIZE.xl,
     fontWeight: FONT_WEIGHT.semiBold,
   },
-  scroll: { gap: SPACE[3], paddingHorizontal: SPACE['layout-horizontal'] },
+  scroll: { gap: SPACE[2], paddingHorizontal: SPACE['layout-horizontal'] },
 });
