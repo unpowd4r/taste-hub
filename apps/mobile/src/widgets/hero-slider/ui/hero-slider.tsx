@@ -15,7 +15,7 @@ import { HeroSlide } from './hero-slide';
 import { TitleInfo } from '@/entities/title-info';
 import { Button } from '@/shared/ui';
 
-export const AUTO_SCROLL_INTERVAL = 4000;
+export const AUTO_SCROLL_INTERVAL = 6000;
 
 type Props = {
   items: TitleListItemResponse[];
@@ -23,7 +23,7 @@ type Props = {
 
 export function HeroSlider({ items }: Props) {
   const { width } = Dimensions.get('window');
-  const height = width * 1.35;
+  const height = width * 1.4;
 
   const scrollRef = useRef<Animated.ScrollView>(null);
   const autoScrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -89,7 +89,10 @@ export function HeroSlider({ items }: Props) {
           style={styles.content}
           pointerEvents='box-none'
         >
-          <Animated.View style={textBlockStyle}>
+          <Animated.View
+            style={textBlockStyle}
+            pointerEvents='none'
+          >
             <TitleInfo
               name={current.name}
               genres={MOCK_GENRES}
