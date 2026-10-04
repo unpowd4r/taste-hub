@@ -17,7 +17,9 @@ export default function ScreenLayout({ children, edges = ['top'] }: Props) {
     <SafeAreaView
       style={styles.container}
       edges={edges}
-    ></SafeAreaView>
+    >
+      {children}
+    </SafeAreaView>
   );
 }
 

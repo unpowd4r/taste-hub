@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 
 import { SPACE } from '@app/tokens';
@@ -5,6 +6,7 @@ import { SPACE } from '@app/tokens';
 import ScreenLayout from '../screen-layout';
 
 import { MOCK_SAMPLE_TITLES, TitleCard } from '@/entities/title-card';
+import { Button } from '@/shared/ui';
 import { CarouselSection, Header, HeroSlider } from '@/widgets';
 
 const sections = [
@@ -46,6 +48,8 @@ export default function Index() {
             ))}
           </CarouselSection>
         ))}
+
+        <Button onPress={() => router.push('/register')}>Sign up</Button>
       </Animated.ScrollView>
     </ScreenLayout>
   );

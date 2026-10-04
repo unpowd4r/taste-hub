@@ -18,3 +18,6 @@ export const TYPE_LABELS: Record<TitleListItemResponseType, string> = {
   MOVIE: 'Movie',
   TV_SHOW: 'Series',
 };
+
+export const ACCESS_TOKEN = 'accessToken';
+export const REFRESH_TOKEN = 'refreshToken';
