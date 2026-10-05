@@ -3,6 +3,8 @@ import { DarkTheme, Stack, ThemeProvider } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import '@/shared/lib/api';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

@@ -19,6 +19,10 @@ export class ApiError extends Error {
 }
 
 export const http = async <T>(url: string, init?: RequestInit): Promise<T> => {
+  if (!baseUrl) {
+    throw new Error('API is not configured. Please call configureApi() fix it');
+  }
+
   const token = getToken();
 
   const response = await fetch(`${baseUrl}${url}`, {

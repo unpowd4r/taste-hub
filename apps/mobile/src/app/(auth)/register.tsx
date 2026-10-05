@@ -18,7 +18,7 @@ export default function Register() {
     resolver: zodResolver(authSchema),
   });
 
-  const { mutate, isPending, error } = useAuthMobileRegister({
+  const { mutate, isPending } = useAuthMobileRegister({
     mutation: {
       onSuccess: async ({ data: { accessToken, refreshToken } }) => {
         await saveTokens(accessToken, refreshToken);
